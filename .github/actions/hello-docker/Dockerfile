@@ -2,7 +2,5 @@ FROM alpine:3.18
 
 COPY entrypoint.sh /entrypoint.sh
 
-# 這行是重點：在容器裡把它設成可執行
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+# 不再直接執行 /entrypoint.sh，而是用 sh 來跑它
+ENTRYPOINT ["sh", "/entrypoint.sh"]
